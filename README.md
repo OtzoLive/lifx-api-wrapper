@@ -1,2 +1,2 @@
-# lifx-light-controller
- Node.js Lifx controller
+# lifx-api-wrapper
+ Node.js Lifx HTTP API Wrapper
