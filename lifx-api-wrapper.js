@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 class Lifx{
-    constructor(auth_token) {
-        this.auth_token = auth_token;
+    constructor(auth_key) {
+        this.auth_key = auth_key;
     }
 
     async ListLights(selector = '') {
@@ -12,7 +12,7 @@ class Lifx{
 
             var request = ('lights/' + selector)
 
-            var response = await axiosGet(request, this.auth_token);
+            var response = await axiosGet(request, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -36,7 +36,7 @@ class Lifx{
                 'fast': fast
             };
 
-            var response = await axiosPut(request, data, this.auth_token);
+            var response = await axiosPut(request, data, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -54,7 +54,7 @@ class Lifx{
                 'duration': duration
             };
 
-            var response = await axiosPost(request, data, this.auth_token);
+            var response = await axiosPost(request, data, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -70,7 +70,7 @@ class Lifx{
 
             var request = ('scenes');
 
-            var response = await axiosGet(request, this.auth_token);
+            var response = await axiosGet(request, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -91,7 +91,7 @@ class Lifx{
                 'fast': fast
             };
 
-            var response = await axiosPut(request, data, this.auth_token);
+            var response = await axiosPut(request, data, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -105,11 +105,11 @@ class Lifx{
 =======================*/
 
 // Axios GET function
-async function axiosGet(request, auth_token) {
+async function axiosGet(request, auth_key) {
     try {
         var response = await axios.get(request, {
             headers: {
-                'Authorization': 'Bearer ' + auth_token
+                'Authorization': 'Bearer ' + auth_key
             },
             baseURL: 'https://api.lifx.com/v1/'
         });
@@ -123,12 +123,12 @@ async function axiosGet(request, auth_token) {
 };
 
 // Axios PUT function
-async function axiosPut(request, data, auth_token) {
+async function axiosPut(request, data, auth_key) {
     try {
         var response = await axios.put(request, data,
             {
                 headers: {
-                    'Authorization': 'Bearer ' + auth_token
+                    'Authorization': 'Bearer ' + auth_key
                 },
                 baseURL: 'https://api.lifx.com/v1/'
             });
@@ -141,12 +141,12 @@ async function axiosPut(request, data, auth_token) {
 };
 
 // Axios POST function
-async function axiosPost(request, data, auth_token) {
+async function axiosPost(request, data, auth_key) {
     try {
         var response = await axios.post(request, data,
             {
                 headers: {
-                    'Authorization': 'Bearer ' + auth_token
+                    'Authorization': 'Bearer ' + auth_key
                 },
                 baseURL: 'https://api.lifx.com/v1/'
             });
