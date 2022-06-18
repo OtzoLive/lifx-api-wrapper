@@ -1,6 +1,4 @@
 dev/
 .vscode
-.gitignore
 node_modules/
-.gitattributes
 package-lock.json
