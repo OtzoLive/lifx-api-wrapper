@@ -17,7 +17,7 @@ Node.js Lifx HTTP API Wrapper
 Install lifx-api-wrapper with npm:
 
 ```bash
-  npm install lifx-api-wrapper
+ $ npm install lifx-api-wrapper
 ```
 
 To run this project, you will need a LIFX HTTP API key.
@@ -34,11 +34,11 @@ import Lifx from '../lifx-api-wrapper.js';
 //create instance with our Lifx Token
 var lifx = new Lifx(LIFX_KEY);
 
-//Now lifx will always use your key
+//lifx.<method> will now always use the key provided
 ```
 
 
-#### Getting a list of all lights
+#### Get list of all lights
 
 Most functions require a `selector` to determine which lights to control. To stay consistent and avoid the package breaking, the wrapper uses [standard LIFX selectors](https://api.developer.lifx.com/docs/selectors) laid out in their documentation.
 ```javascript
