@@ -1,5 +1,5 @@
 
-# lifx-api-wrapper
+# lifx-node-wrapper
 
 Node.js Lifx HTTP API Wrapper
 
@@ -14,10 +14,10 @@ Node.js Lifx HTTP API Wrapper
 
 ## Installation
 
-Install lifx-api-wrapper with npm:
+Install lifx-node-wrapper with npm:
 
 ```bash
- $ npm install lifx-api-wrapper
+ $ npm install lifx-node-wrapper
 ```
 
 To run this project, you will need a LIFX HTTP API key.
@@ -29,7 +29,7 @@ Get your key here: https://api.developer.lifx.com/docs/authentication
 #### Getting started
 
 ```javascript
-import Lifx from '../lifx-api-wrapper.js';
+import Lifx from 'lifx-node-wrapper';
 
 //create instance with our Lifx Token
 var lifx = new Lifx(LIFX_KEY);
