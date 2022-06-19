@@ -20,6 +20,7 @@
   "author": "John 'OtzoLive' Waters <john@johncwaters.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "lifx-node-wrapper": "^1.0.0"
   }
 }
