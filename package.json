@@ -1,6 +1,6 @@
 {
   "name": "lifx-node-wrapper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js Lifx HTTP API Wrapper",
   "main": "lifx-node-wrapper.js",
   "repository": {
