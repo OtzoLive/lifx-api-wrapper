@@ -1,9 +1,11 @@
 {
   "name": "lifx-node-wrapper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js Lifx HTTP API Wrapper",
   "main": "index.js",
-  "repository": {"url": "https://github.com/OtzoLive/lifx-node-wrapper"},
+  "repository": {
+    "url": "https://github.com/OtzoLive/lifx-node-wrapper"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
