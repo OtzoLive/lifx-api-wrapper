@@ -7,7 +7,7 @@ Node.js Lifx HTTP API Wrapper
 
 ## Features
 
-- Promise based REST API calls
+- Promise based REST API wrapper
 - Easy access to API responses
 - Supports most LIFX HTTP API endpoints (more to be added)
 
@@ -278,5 +278,6 @@ Any and all feedback is appreciated.
 
 ### 🔗 Links
 [![telegram](https://img.shields.io/badge/Telegram-%40OtzoLive-blue?style=flat-square&logo=telegram)](https://t.me/OtzoLive/) 
-[![twitter](https://img.shields.io/badge/Twitter-%40OtzoLive-blue??style=flat-square&logo=twitter)](https://twitter.com/OtzoLive/)
+[![twitter](https://img.shields.io/badge/Twitter-%40OtzoLive-blue?style=flat-square&logo=twitter)](https://twitter.com/OtzoLive/)
+[![wakatime](https://wakatime.com/badge/user/7a991802-ef44-4138-9f49-6e4ab5ccfd96/project/4b86aa02-792d-406d-9c71-7cea3b77d57b.svg?style=flat-square)](https://wakatime.com/badge/user/7a991802-ef44-4138-9f49-6e4ab5ccfd96/project/4b86aa02-792d-406d-9c71-7cea3b77d57b)
 
