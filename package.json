@@ -1,7 +1,7 @@
 {
-  "name": "lifx-api-wrapper",
+  "name": "lifx-node-wrapper",
   "version": "1.0.0",
-  "description": "Node.js LIFX light controller",
+  "description": "Node.js Lifx HTTP API Wrapper",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -17,7 +17,7 @@
     "javascript",
     "http"
   ],
-  "author": "John OtzoLive Waters <john@johncwaters.com>",
+  "author": "John 'OtzoLive' Waters <john@johncwaters.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2"
