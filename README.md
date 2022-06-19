@@ -85,49 +85,49 @@ lifx.SetState('group_id:6a2e3...', 'on')
 
 Returns all available lights and their unique selectors. It's recommended to use their unique ID's instead of names like "Living Room" since the ID's will never change.
 
-Example response:
+Example response converted to JSON:
 ```json
 [
   {
-    id: "d07...949",
-    uuid: "029...609d",
-    label: "Office Light",
-    connected: true,
-    power: "off",
-    color: {
-      hue: 0,
-      saturation: 0,
-      kelvin: 2000,
+    "id": "d07...949",
+    "uuid": "029...609d",
+    "label": "Office Light",
+    "connected": true,
+    "power": "off",
+    "color": {
+      "hue": 0,
+      "saturation": 0,
+      "kelvin": 2000
     },
-    brightness: 0.3,
-    group: {
-      id: "e1ad...537",
-      name: "Office",
+    "brightness": 0.3,
+    "group": {
+      "id": "e1ad...537",
+      "name": "Office"
     },
-    location: {
-      id: "fd599...08350",
-      name: "Home",
+    "location": {
+      "id": "fd599...08350",
+      "name": "Home"
     },
-    product: {
-      name: "LIFX Mini Day and Dusk",
-      identifier: "lifx_mini_day_and_dusk2",
-      company: "LIFX",
-      vendor_id: 1,
-      product_id: 60,
-      capabilities: {
-        has_color: false,
-        has_variable_color_temp: true,
-        has_ir: false,
-        has_hev: false,
-        has_chain: false,
-        has_matrix: false,
-        has_multizone: false,
-        min_kelvin: 1500,
-        max_kelvin: 4000,
-      },
+    "product": {
+      "name": "LIFX Mini Day and Dusk",
+      "identifier": "lifx_mini_day_and_dusk2",
+      "company": "LIFX",
+      "vendor_id": 1,
+      "product_id": 60,
+      "capabilities": {
+        "has_color": false,
+        "has_variable_color_temp": true,
+        "has_ir": false,
+        "has_hev": false,
+        "has_chain": false,
+        "has_matrix": false,
+        "has_multizone": false,
+        "min_kelvin": 1500,
+        "max_kelvin": 4000
+      }
     },
-    last_seen: "2022-06-19T02:50:56Z",
-    seconds_since_seen: 0,
+    "last_seen": "2022-06-19T02:50:56Z",
+    "seconds_since_seen": 0
   }
 ]
 ```
@@ -156,29 +156,29 @@ Turn off lights if any of them are on, or turn them on if they are all off.
 
 Lists all scenes associated with the API Key provided.
 
-Example response:
+Example response converted to JSON:
 ```json
 [
   {
-    uuid: "1b3a...s3451",
-    name: "Night Time",
-    account: {
-      uuid: "435dza...5182z",
+    "uuid": "1b3a...s3451",
+    "name": "Night Time",
+    "account": {
+      "uuid": "435dza...5182z"
     },
-    states: [
+    "states": [
       {
-        selector: "id:d07...ee46",
-        power: "on",
-        brightness: 0.1297,
-        color: {
-          hue: 350.6141,
-          saturation: 1,
-          kelvin: 3500,
-        },
-      },
+        "selector": "id:d07...ee46",
+        "power": "on",
+        "brightness": 0.1297,
+        "color": {
+          "hue": 350.6141,
+          "saturation": 1,
+          "kelvin": 3500
+        }
+      }
     ],
-    created_at: 1639715780,
-    updated_at: 1652936342,
+    "created_at": 1639715780,
+    "updated_at": 1652936342
   }
 ]
 ```
