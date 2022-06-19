@@ -128,8 +128,7 @@ Example response:
     },
     last_seen: "2022-06-19T02:50:56Z",
     seconds_since_seen: 0,
-  },
-  other lights here...
+  }
 ]
 ```
 
@@ -180,8 +179,7 @@ Example response:
     ],
     created_at: 1639715780,
     updated_at: 1652936342,
-  },
-  other scenes here...
+  }
 ]
 ```
  ### `lifx.ActivateScene()`
