@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-class Lifx{
+import https from 'node:https';
+class Lifx {
     constructor(auth_key) {
         this.auth_key = auth_key;
     }
@@ -49,12 +49,13 @@ class Lifx{
             //check parameters first
             parameterChecks(selector);
 
-            var request = ('lights/' + selector + '/toggle');
+            var request = ('/lights/' + selector + '/toggle');
             var data = {
                 'duration': duration
             };
 
-            var response = await axiosPost(request, data, this.auth_key);
+            var response = await fetchPost(request, data, this.auth_key)
+            //var response = await axiosPost(request, data, this.auth_key);
             return response;
         } catch (error) {
             // return full error
@@ -65,7 +66,6 @@ class Lifx{
     async ListScenes() {
         try {
             //check parameters first
-            //parameterChecks(selector);
             //no params to check
 
             var request = ('scenes');
@@ -150,6 +150,48 @@ async function axiosPost(request, data, auth_key) {
                 },
                 baseURL: 'https://api.lifx.com/v1/'
             });
+        // return the full response
+        return response;
+    } catch (error) {
+        // return full error
+        throw error;
+    };
+};
+
+// Fetch POST with promise and automatic retries (retry=true)
+// Does not use Axios
+async function fetchPost(request, data, auth_key) {
+    try {
+
+        var options = {
+            protocol: 'https:',
+            host: 'api.lifx.com',
+            path: request,
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + auth_key
+            }
+        };
+
+        const req = https.request(options, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                console.log(JSON.parse(data));
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: ", err.message);
+        });
+
+        req.write(data);
+        req.end();
+
+
         // return the full response
         return response;
     } catch (error) {

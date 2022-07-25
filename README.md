@@ -1,16 +1,13 @@
-
 # lifx-node-wrapper
 
-Node.js Lifx HTTP API Wrapper
-
-
+Node.js LIFX HTTP Lights API Wrapper
 
 ## Features
 
 - Promise based REST API wrapper
 - Easy access to API responses
 - Supports most LIFX HTTP API endpoints (more to be added)
-
+- Uses Axios as only dependency
 
 ## Installation
 
@@ -23,13 +20,12 @@ Install lifx-node-wrapper with npm:
 To run this project, you will need a LIFX HTTP API key.
 Get your key here: https://api.developer.lifx.com/docs/authentication
 
-
 ## Usage
 
 #### Getting started
 
 ```javascript
-import Lifx from 'lifx-node-wrapper';
+import Lifx from "lifx-node-wrapper";
 
 //create instance with our Lifx Token
 var lifx = new Lifx(LIFX_KEY);
@@ -37,41 +33,42 @@ var lifx = new Lifx(LIFX_KEY);
 //lifx.<method> will now always use the key provided
 ```
 
-
 #### Get list of all lights
 
 Most functions require a `selector` to determine which lights to control. To stay consistent and avoid the package breaking, the wrapper uses [standard LIFX selectors](https://api.developer.lifx.com/docs/selectors) laid out in their documentation.
+
 ```javascript
-var lights = await lifx.ListLights('all')
+var lights = await lifx.ListLights("all");
 console.log(lights.data);
 
 //OR
 
-lifx.ListLights('all')
-    //grab returned data
-    .then(data => {
-        //handle data
-        console.log(data)
-    })
-    .catch(err => 
-        //handle errors
-        console.log(err)
-    );
+lifx
+  .ListLights("all")
+  //grab returned data
+  .then((data) => {
+    //handle data
+    console.log(data);
+  })
+  .catch((err) =>
+    //handle errors
+    console.log(err)
+  );
 ```
 
 #### Not using a parameter in a function
 
-If you don't need a certain parameter, fill the spot with `undefined`. Note: `selector` and `power` are required if they are part of the function. 
+If you don't need a certain parameter, fill the spot with `undefined`. Note: `selector` and `power` are required if they are part of the function.
 
 ```javascript
-lifx.SetState('group_id:6a2e3...', 'on', undefined, 6.0, undefined, true)
+lifx.SetState("group_id:6a2e3...", "on", undefined, 6.0, undefined, true);
 ```
+
 You do not have to list `undefined` in every unused parameter.
 
 ```javascript
-lifx.SetState('group_id:6a2e3...', 'on')
+lifx.SetState("group_id:6a2e3...", "on");
 ```
-
 
 ## API Reference
 
@@ -79,13 +76,14 @@ lifx.SetState('group_id:6a2e3...', 'on')
 
 ### `lifx.ListLights()`
 
-| Parameter | Type     | Example | Description              |
-| :-------- | :------- |:------- |:------------------------ |
-| `selector` | `string` | 'all' | **Required**            |
+| Parameter  | Type     | Example | Description  |
+| :--------- | :------- | :------ | :----------- |
+| `selector` | `string` | 'all'   | **Required** |
 
 Returns all available lights and their unique selectors. It's recommended to use their unique ID's instead of names like "Living Room" since the ID's will never change.
 
 Example response converted to JSON:
+
 ```json
 [
   {
@@ -134,21 +132,21 @@ Example response converted to JSON:
 
 ### `lifx.SetState()`
 
-| Parameter | Type     | Example | Description              |
-| :-------- | :------- |:------- |:------------------------ |
-| `selector` | `string` | 'group_id:6a2e3b...' | **Required**            |
-| `power` | `string` | 'on' | **Required**            |
-| `color` | `string` |  |            |
-| `brightness` | `double` | 0.1 |            |
-| `duration` | `double` | 1.0 | Defaults to 1.0            |
-| `infared` | `double` | '0.5' |            |
-| `fast` | `boolean` | false | Defaults to false           |
+| Parameter    | Type      | Example              | Description       |
+| :----------- | :-------- | :------------------- | :---------------- |
+| `selector`   | `string`  | 'group_id:6a2e3b...' | **Required**      |
+| `power`      | `string`  | 'on'                 | **Required**      |
+| `color`      | `string`  |                      |                   |
+| `brightness` | `double`  | 0.1                  |                   |
+| `duration`   | `double`  | 1.0                  | Defaults to 1.0   |
+| `infared`    | `double`  | '0.5'                |                   |
+| `fast`       | `boolean` | false                | Defaults to false |
 
 ### `lifx.TogglePower()`
 
-| Parameter | Type     | Example | Description              |
-| :-------- | :------- |:------- |:------------------------ |
-| `selector` | `string` | 'id:3a9b0x...' | **Required**            |
+| Parameter  | Type     | Example        | Description  |
+| :--------- | :------- | :------------- | :----------- |
+| `selector` | `string` | 'id:3a9b0x...' | **Required** |
 
 Turn off lights if any of them are on, or turn them on if they are all off.
 
@@ -157,6 +155,7 @@ Turn off lights if any of them are on, or turn them on if they are all off.
 Lists all scenes associated with the API Key provided.
 
 Example response converted to JSON:
+
 ```json
 [
   {
@@ -182,20 +181,16 @@ Example response converted to JSON:
   }
 ]
 ```
- ### `lifx.ActivateScene()`
 
-| Parameter | Type     | Example | Description              |
-| :-------- | :------- |:------- |:------------------------ |
-| `selector` | `string` | 'scene_id:6a2e3b...' | **Required** |
-| `duration` | `double` | 1.0 | Defaults to 1.0            |
-| `ignore` | `array` |   |   **This has not been tested**       |
-| `overrides` | `array` |   |   **This has not been tested**       |
-| `fast` | `boolean` | false | Defaults to false           |
+### `lifx.ActivateScene()`
 
-
-
-
-
+| Parameter   | Type      | Example              | Description                  |
+| :---------- | :-------- | :------------------- | :--------------------------- |
+| `selector`  | `string`  | 'scene_id:6a2e3b...' | **Required**                 |
+| `duration`  | `double`  | 1.0                  | Defaults to 1.0              |
+| `ignore`    | `array`   |                      | **This has not been tested** |
+| `overrides` | `array`   |                      | **This has not been tested** |
+| `fast`      | `boolean` | false                | Defaults to false            |
 
 ## Examples
 
@@ -208,7 +203,7 @@ lifx.SetState('group_id:6a2e3...', 'on', undefined, 10.0, undefined, true)
 
 //Note: no response is given in fast mode
 lifx.SetState('group_id:6a2e3...', 'on', undefined, 10.0, undefined, true)
-    .catch(err => 
+    .catch(err =>
         //handle errors
     );
 ```
@@ -225,7 +220,7 @@ lifx.TogglePower('group_id:6a2e3...', 'on')
     .then(data => {
         //handle data
     })
-    .catch(err => 
+    .catch(err =>
         //handle errors
     );
 ```
@@ -242,13 +237,10 @@ lifx.ActivateScene('scene_id:1c4d3c7...338fa9', 1.0)
     .then(data => {
         //handle data
     })
-    .catch(err => 
+    .catch(err =>
         //handle errors
     );
 ```
-
-
-
 
 ## Future Goals
 
@@ -257,6 +249,9 @@ lifx.ActivateScene('scene_id:1c4d3c7...338fa9', 1.0)
 - Add additional error handling to improve usability
 
 - Implement automated tests / checks using jest
+
+- Remove Axios as dependency and add custom fetch function instead
+
 ## Related
 
 Inspired by other related projects:
@@ -264,7 +259,6 @@ Inspired by other related projects:
 [ywadi/lifx](https://github.com/ywadi/lifx)
 
 [thanoskrg/lifxjs](https://github.com/thanoskrg/lifxjs)
-
 
 ## 📖 Feedback
 
@@ -277,7 +271,7 @@ Writing this wrapper introduced me to javascript prototypes, classes, publishing
 Any and all feedback is appreciated.
 
 ### 🔗 Links
-[![telegram](https://img.shields.io/badge/Telegram-%40OtzoLive-blue?style=flat-square&logo=telegram)](https://t.me/OtzoLive/) 
+
+[![telegram](https://img.shields.io/badge/Telegram-%40OtzoLive-blue?style=flat-square&logo=telegram)](https://t.me/OtzoLive/)
 [![twitter](https://img.shields.io/badge/Twitter-%40OtzoLive-blue?style=flat-square&logo=twitter)](https://twitter.com/OtzoLive/)
 [![wakatime](https://wakatime.com/badge/user/7a991802-ef44-4138-9f49-6e4ab5ccfd96/project/4b86aa02-792d-406d-9c71-7cea3b77d57b.svg?style=flat-square)](https://wakatime.com/badge/user/7a991802-ef44-4138-9f49-6e4ab5ccfd96/project/4b86aa02-792d-406d-9c71-7cea3b77d57b)
-

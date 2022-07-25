@@ -1,7 +1,7 @@
 {
   "name": "lifx-node-wrapper",
   "version": "1.0.4",
-  "description": "Node.js Lifx HTTP API Wrapper",
+  "description": "Node.js LIFX HTTP Lights API Wrapper",
   "main": "lifx-node-wrapper.js",
   "repository": {
     "url": "https://github.com/OtzoLive/lifx-node-wrapper"
